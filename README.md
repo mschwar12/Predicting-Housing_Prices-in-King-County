@@ -79,9 +79,9 @@ For any questions, please contact Matt Schwartz at [mtschwart@gmail.com](mailto:
 ├── data
 ├── CONTRIBUTING.md
 ├── LICENSE.md
+├── King_County_Home_Price_Predictions_Presentation.pdf
 ├── Link_to_Presentation_Recording.docx
-├── Predicting_Housing_Prices_In_King_County_Presentation.pdf
-├── Predicting_Housing_Prices_In_King_County.pdf
-├── Predicting_Housing_Prices_In_King_County_Jupyter_Notebook.ipynb
+├── Predicting_Housing_Prices_In_King_County.ipynb
+├── Predicting_Housing_Prices_In_King_County_Jupyter_Notebook.pdf
 ├── README.md
 ```
