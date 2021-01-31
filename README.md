@@ -38,7 +38,27 @@ In addition, we create a number of variables based on our existing data. These i
 
 ## Results
 
-Our final model, which included zipcodes, improved the R2 value by 16 percentage points over our baseline model. It also reduced root mean squared error by $26K. In addition, we calculated the impact that each independent variable had on price. These findings include:
+Our final model, which included zipcodes, improved the R2 value by 16 percentage points over our baseline model. It also reduced root mean squared error by $26K. 
+
+Baseline Model:
+
+![baseline model]
+
+In addition, we calculated the impact that each independent variable had on price. These findings include:
+
+Baseline 
+
+![ratings and revenues](/images/ratings_revenue.png)
+
+Average budgets are increasing year-over-year.
+
+![budgets_year](/images/budgets_year.png)
+
+The average rating for the top ROI movies is well below those of the top grossing
+
+![rating_roi](/images/ratings_roi.png)
+
+![rating_top_gross](/images/ratings_top_gross.png)
 
   - A one unit increase square footage increases price by 19% on average, holding all else equal.
   - An extra year of age decreases price by an average of about 1.4%.
