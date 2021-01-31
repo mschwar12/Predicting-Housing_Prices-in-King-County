@@ -1,66 +1,88 @@
-# Phase 2 Project
+# Predicting Housing Prices in King County, WA, Using Multiple Linear Regression
 
-Another module down--you're almost half way there!
+**Author**: [Matt Schwartz](mailto:mtschwart@gmail.com)
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-2-project-campus/master/halfway-there.gif)
+## Overview 
 
-All that remains in Phase 2 is to put our newfound data science skills to use with a large project! This project should take 20 to 30 hours to complete.
+The following report provides data and analysis on housing prices in King County, Washington State, and details a number of multiple regression models used to predict these prices. 
 
-## Project Overview
+## Business Problem
 
-For this project, you will use regression modeling to analyze house sales in a northwestern county.
+Buying a home can be a frustrating process. Everyone has some idea of their dream home, but when it comes down to actually buying one, chances are there are blockers to getting the exact one you want. Maybe the square footage isn't right, or you wish it had another bedroom, or you simply don't have enough cash on hand to cover the down payment. Whatever it is, the process is long and arduous and requires lots of research.
 
-### The Data
+As a prospective home buyer, one of the last things you'd want to do is overpay for that home. It's hard to know when you're getting fleeced, especially when you're really desparate to buy. This project is meant to help buyers not overpay for their home. By building a reliable prediction engine, we can help new home buyers know if they're getting a good price. We'd also be able to tell them what factors influence prices, and by how much. In theory, waterfront property will be cost more, but by how much? Does a house that's been renovated have much higher prices than those that haven't? How about how old the house is, or the zipcode in which it was built?
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this repo. The description of the column names can be found in `column_names.md` in the same folder. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions about what the data means.
+The following will attempt to build a prediction engine that prospective home buyers can use when searching for ideal home. In the future, this model can be used as the backbone for an app or website, in which you can input the information of a house that is on sale, predict what the market price should be, and compare it to listings across the internet on sites like Zillow.
 
-It is up to you to decide what data from this dataset to use and how to use it. If you are feeling overwhelmed or behind, we recommend you ignore some or all of the following features:
+## Data
 
-* date
-* view
-* sqft_above
-* sqft_basement
-* yr_renovated
-* zipcode
-* lat
-* long
-* sqft_living15
-* sqft_lot15
+The data in this project comes from King County of Washington State. The county includes both Seattle and Bellevue, so we're looking at a large number of houses - over 21K. The dependent variable in this analysis will be home prices.
 
-### Business Problem
+To help predict the price, we will be using the following explanatory variables:
 
-It is up to you to define a stakeholder and business problem appropriate to this dataset.
+- Rooms
+- Square footage in each house, and the square footage of the houses' 15 closest neighbors
+- Year built
+- Year renovated (if applicable)
+- Condition (overall condition of the house)
+- Grade (overall grade given to each house by the King County Grading System)
+- Zipcode
+- Latitude and longitude
+- Using these variables, and others I create, I will attempt to create a quality model (defined by satisfying the assumptions of linear regression, a high R2, and a low root mean squared error) that can accurately predict the price of a house and also provide clarity into how different variables affect the price.
 
-If you are struggling to define a stakeholder, we recommend you complete a project for a real estate agency that helps homeowners buy and/or sell homes. A business problem you could focus on for this stakeholder is the need to provide advice to homeowners about how home renovations might increase the estimated value of their homes, and by what amount.
+## Methods
 
-## Deliverables
+To build a prediction engine, we utilized multiple linear regression. By regressing the variables listed above on price, we were able to account for a significant portion of the variation in price. To eliminate the influence of major outliers, we limited the sample to houses that sold for between $100,000 and $1,000,000, and that were smaller than 4500 square feet in total space.
 
-There are three deliverables for this project:
+In addition, we create a number of variables based on our existing data. These include each houses' distance from downtown Seatlle in miles, age, and a dummy variable for whether a house was renovated or not.
 
-* A **GitHub repository**
-* A **Jupyter Notebook**
-* A **non-technical presentation**
+## Results
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic for instructions on creating and submitting your deliverables. Refer to the rubric associated with this assignment for specifications describing high-quality deliverables.
+Our final model, which included zipcodes, improved the R2 value by 16 percentage points over our baseline model. It also reduced root mean squared error by $26K. In addition, we calculated the impact that each independent variable had on price. These findings include:
 
-### Key Points
+  - A one unit increase square footage increases price by 19% on average, holding all else equal.
+  - An extra year of age decreases price by an average of about 1.4%.
+  - One extra mile further from downtown decreases price by an average of about 13%.
+  - A house on the waterfront is 72% more expensive than a house that isn't, on average.
 
-* **Your deliverables should explicitly address each step of the data science process.** Refer to [the Data Science Process lesson](https://github.com/learn-co-curriculum/dsc-data-science-processes) from Topic 19 for more information about process models you can use.
 
-* **Your Jupyter Notebook should demonstrate an iterative approach to modeling.** This means that you begin with a basic model, evaluate it, and then provide justification for and proceed to a new model. After you finish refining your models, you should provide 1-3 paragraphs discussing your final model - this should include interpreting at least 3 important parameter estimates or statistics.
+## Conclusions
 
-* **Based on the results of your models, your notebook and presentation should discuss at least two features that have strong relationships with housing prices.**
+This analysis led to a number of useful findings:
+- Dramas are far and away the most frequent type of movie produced. However, they are not the most lucrative. Adventure, animation, sci-fi, action, and fantasy rake in the most cash.
+- We see a strong, positive correlation between budgets and revenues. Movies that tend to spend a lot, also make a lot of money, though this subject could use further analysis
+- Average budgets per year are increasing while the number of movies produced a year are slightly decreasing. It's possible that that larger productions and their profitability are discouraging studios from financing smaller movies, that may have equal returns on their investment, but don't earn as much overall.
+- There is a clear, strongly positive correlation between revenues and average ratings. This deserves further analysis, but if your movie is rated highly and the production budget was large, chances are the movie is making a lot of money.
+- We found a negative correlation between ROI and average rating. This might just be noisy data but it does tell us that ROI has no real connection to ratings, nor does it with how much a movie will earn. The top ROI movies rated significantly worse than the top grossing movies
 
-## Getting Started
+## Further Analysis
 
-Start on this project by forking and cloning [this project repository](https://github.com/learn-co-curriculum/dsc-phase-2-project) to get a local copy of the dataset.
+We could glean some additional insights from this data by increasing the rigour of our statistical analysis. Some areas I'd like to explore:
 
-We recommend structuring your project repository similar to the structure in [the Phase 1 Project Template](https://github.com/learn-co-curriculum/dsc-project-template). You can do this either by creating a new fork of that repository to work in or by building a new repository from scratch that mimics that structure.
+- Is the decreasing number of movies being produced a blip or a trend, and are growing production budgets in some way causing this to happen?
+- Is there any sort of causation between average ratings and revenues? What other factors lead to high average ratings? Is there a way to engineer movie production to create only high rating movies?
+- To what extent does there exist some causation between production budgets and average rating? We found a weak but positive correlation. At what spend threshold do we begin to see diminishing marginal returns?
+- Would we see a positive correlation between ROI and ratings if we removed horror and mystery films? To what extent is there a real connection there?
 
-## Project Submission and Review
+## For More Information
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
+Please find the full analysis in the Jupyter notebook contained in this respository.
 
-## Summary
+For any questions, please contact Matt Schwartz at [mtschwart@gmail.com](mailto:mtschwart@gmail.com)
 
-This project will give you a valuable opportunity to develop your data science skills using real-world data. The end-of-phase projects are a critical part of the program because they give you a chance to bring together all the skills you've learned, apply them to realistic projects for a business stakeholder, practice communication skills, and get feedback to help you improve. You've got this!
+
+
+
+## Repository Structure
+
+```
+├── images
+├── data
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── Link_to_Presentation_Recording.docx
+├── Predicting_Housing_Prices_In_King_County_Presentation.pdf
+├── Predicting_Housing_Prices_In_King_County.pdf
+├── Predicting_Housing_Prices_In_King_County.ipynb
+├── README.md
+```
