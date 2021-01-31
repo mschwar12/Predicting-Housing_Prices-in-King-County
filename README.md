@@ -75,10 +75,11 @@ For any questions, please contact Matt Schwartz at [mtschwart@gmail.com](mailto:
 ## Repository Structure
 
 ```
-├── images
 ├── data
+├── images
+├── .canvas
+├── .gitignore
 ├── CONTRIBUTING.md
-├── LICENSE.md
 ├── King_County_Home_Price_Predictions_Presentation.pdf
 ├── Link_to_Presentation_Recording.docx
 ├── Predicting_Housing_Prices_In_King_County.ipynb
