@@ -42,23 +42,13 @@ Our final model, which included zipcodes, improved the R2 value by 16 percentage
 
 Baseline Model:
 
-![baseline model]
+![baseline model](/images/benchmark_model_results.png)
+
+Final Model:
+
+![final model](/images/final_model_results.png)
 
 In addition, we calculated the impact that each independent variable had on price. These findings include:
-
-Baseline 
-
-![ratings and revenues](/images/ratings_revenue.png)
-
-Average budgets are increasing year-over-year.
-
-![budgets_year](/images/budgets_year.png)
-
-The average rating for the top ROI movies is well below those of the top grossing
-
-![rating_roi](/images/ratings_roi.png)
-
-![rating_top_gross](/images/ratings_top_gross.png)
 
   - A one unit increase square footage increases price by 19% on average, holding all else equal.
   - An extra year of age decreases price by an average of about 1.4%.
@@ -68,28 +58,17 @@ The average rating for the top ROI movies is well below those of the top grossin
 
 ## Conclusions
 
-This analysis led to a number of useful findings:
-- Dramas are far and away the most frequent type of movie produced. However, they are not the most lucrative. Adventure, animation, sci-fi, action, and fantasy rake in the most cash.
-- We see a strong, positive correlation between budgets and revenues. Movies that tend to spend a lot, also make a lot of money, though this subject could use further analysis
-- Average budgets per year are increasing while the number of movies produced a year are slightly decreasing. It's possible that that larger productions and their profitability are discouraging studios from financing smaller movies, that may have equal returns on their investment, but don't earn as much overall.
-- There is a clear, strongly positive correlation between revenues and average ratings. This deserves further analysis, but if your movie is rated highly and the production budget was large, chances are the movie is making a lot of money.
-- We found a negative correlation between ROI and average rating. This might just be noisy data but it does tell us that ROI has no real connection to ratings, nor does it with how much a movie will earn. The top ROI movies rated significantly worse than the top grossing movies
+Our final model has good predicitive power - as mentioned above, it accounts for over 80% of the variation in price - but does have some issues. It's very heteroscedastic, meaning the residuals are not randomly distributed, and the root mean squared error, although much smaller than we started, is still $85K, meaning that each prediction has an average error of $85K. There is future work to be done. 
 
 ## Further Analysis
 
-We could glean some additional insights from this data by increasing the rigour of our statistical analysis. Some areas I'd like to explore:
-
-- Is the decreasing number of movies being produced a blip or a trend, and are growing production budgets in some way causing this to happen?
-- Is there any sort of causation between average ratings and revenues? What other factors lead to high average ratings? Is there a way to engineer movie production to create only high rating movies?
-- To what extent does there exist some causation between production budgets and average rating? We found a weak but positive correlation. At what spend threshold do we begin to see diminishing marginal returns?
-- Would we see a positive correlation between ROI and ratings if we removed horror and mystery films? To what extent is there a real connection there?
+In the future, the main goal would be to gather more data to eliminate hidden variable bias. There are likely many more factors that influence housing price which we are not capturing in our models. Doing so would reduce our errors, improve prediction power, and create a prediction engine powerful enough to support a new application or website.
 
 ## For More Information
 
 Please find the full analysis in the Jupyter notebook contained in this respository.
 
 For any questions, please contact Matt Schwartz at [mtschwart@gmail.com](mailto:mtschwart@gmail.com)
-
 
 
 
